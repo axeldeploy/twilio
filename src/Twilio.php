@@ -44,7 +44,7 @@ class Twilio
      * @return MessageInstance
      * @throws TwilioException
      */
-    public function sendSms($to, $message, $from): MessageInstance
+    public function sendSms($to, $message, $from = null): MessageInstance
     {
         if (empty($to)) {
             throw new TwilioException("Recipient is not specified");
