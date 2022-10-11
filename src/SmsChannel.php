@@ -1,6 +1,6 @@
 <?php
 
-namespace Axeldeploy\Twilio;
+namespace Axel\Twilio;
 
 use Illuminate\Notifications\Notification;
 

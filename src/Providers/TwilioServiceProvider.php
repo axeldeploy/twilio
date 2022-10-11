@@ -1,6 +1,6 @@
 <?php
 
-namespace Axeldeploy\Twilio\Providers;
+namespace Axel\Twilio\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Umtlv\Twilio\Console\InstallCommand;

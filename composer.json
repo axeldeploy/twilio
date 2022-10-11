@@ -1,9 +1,9 @@
 {
-    "name": "axeldeploy/twilio",
+    "name": "axel/twilio",
     "type": "package",
     "autoload": {
         "psr-4": {
-            "Axeldeploy\\Twilio\\": "src/"
+            "Axel\\Twilio\\": "src/"
         }
     },
     "authors": [
@@ -19,7 +19,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Umtlv\\Twilio\\Providers\\TwilioServiceProvider"
+                "Axel\\Twilio\\Providers\\TwilioServiceProvider"
             ]
         }
     }

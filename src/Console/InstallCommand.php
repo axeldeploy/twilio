@@ -1,6 +1,6 @@
 <?php
 
-namespace Axeldeploy\Twilio\Console;
+namespace Axel\Twilio\Console;
 
 use Illuminate\Console\Command;
 
