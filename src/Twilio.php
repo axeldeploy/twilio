@@ -11,7 +11,7 @@ class Twilio
 {
     private $twilio;
     private $from;
-    private $countryCodes;
+    private $countries;
 
     /**
      * @throws ConfigurationException
@@ -22,14 +22,14 @@ class Twilio
         $secret = config('twilio.key');
         $sid = config('twilio.key');
         $this->from = config('twilio.from');
-        $this->countryCodes = config('twilio.country_codes');
+        $this->countries = config('twilio.countries');
 
         if (
             is_null($key) ||
             is_null($secret) ||
             is_null($sid) ||
             is_null($this->from) ||
-            empty($this->countryCodes)
+            empty($this->countries)
         ) {
             throw new ConfigurationException('Configurations are incorrect');
         }
@@ -80,7 +80,7 @@ class Twilio
 
         if (empty($number->toArray())) return false;
 
-        if (!in_array($number->countryCode, $this->countryCodes)) {
+        if (!in_array($number->countryCode, $this->countries)) {
             return false;
         }
 

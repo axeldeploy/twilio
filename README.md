@@ -1,9 +1,55 @@
 # Twilio
 
-<b>Twilio Sms Sender</b>
+[![Packagist License](https://poser.pugx.org/barryvdh/laravel-dompdf/license.png)](http://choosealicense.com/licenses/mit/)
+[![Latest Stable Version](https://poser.pugx.org/axelhub/twilio/version.png)](https://packagist.org/packages/axelhub/twilio)
 
-- composer require axelhub/twilio
-- php artisan twilio:install
-- configure config/twilio.php
+### [Twilio sms sender](https://github.com/axeldeploy/twilio)
 
-<i>To use sms via notification add SmsChannel::class to via function in notification.</i>
+## Installation
+
+<pre>composer require axelhub/twilio</pre>
+
+After installing run command below. It will create `twilio.php` file in <i>config</i> folder.
+<pre>php artisan twilio:install</pre>
+
+Configure `twilio.php` file with Twilio key, secret, sid and from.
+<br>
+Also, you can customize the list of countries where the app will be able to send messages.
+[List of countries.](https://www.twilio.com/guidelines/regulatory)
+
+## Using
+
+### Custom using
+
+```php
+$twilio = new Twilio();
+$twilio->sendSms($PhoneNumber, $Message);
+```
+
+### Using with Laravel notification
+
+[More about laravel notifications.](https://laravel.com/docs/notifications)
+
+Add `SmsChannel::class` class into via function in notification:
+
+```php
+use Axel\Twilio\SmsChannel;
+
+public function via($notifiable)
+{
+    return [SmsChannel::class];
+}
+```
+
+Create `toSms()` function in notification class:
+
+```php
+use Axel\Twilio\SmsMessage;
+
+public function toSms($notifiable): SmsMessage
+{
+    return (new SmsMessage)
+        ->to($PhoneNumber)
+        ->message($Message);
+}
+```

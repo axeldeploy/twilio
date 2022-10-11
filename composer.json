@@ -1,6 +1,7 @@
 {
     "name": "axelhub/twilio",
     "description": "Axel's sms send package",
+    "license": "MIT",
     "type": "package",
     "autoload": {
         "psr-4": {
