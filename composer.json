@@ -1,0 +1,26 @@
+{
+    "name": "axeldeploy/twilio",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Axeldeploy\\Twilio\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nurislan Umetaliev",
+            "email": "nurislanumetaliev@gmail.com"
+        }
+    ],
+    "require": {
+        "twilio/sdk": "^6.42",
+        "laravel/framework": "^8.37|^9.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Umtlv\\Twilio\\Providers\\TwilioServiceProvider"
+            ]
+        }
+    }
+}
