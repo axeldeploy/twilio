@@ -1,6 +1,6 @@
 <?php
 
-namespace Umtlv\Twilio;
+namespace Axeldeploy\Twilio;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Api\V2010\Account\MessageInstance;

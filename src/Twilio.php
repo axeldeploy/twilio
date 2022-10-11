@@ -1,6 +1,6 @@
 <?php
 
-namespace Umtlv\Twilio;
+namespace Axeldeploy\Twilio;
 
 use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\TwilioException;
