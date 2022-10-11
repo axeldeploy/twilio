@@ -2,7 +2,7 @@
 
 <b>Twilio Sms Sender</b>
 
-- composer require axeldeploy/twilio
+- composer require axel/twilio
 - php artisan twilio:install
 - configure config/twilio.php
 

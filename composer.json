@@ -1,5 +1,6 @@
 {
     "name": "axel/twilio",
+    "description": "Axel's sms send package",
     "type": "package",
     "autoload": {
         "psr-4": {
@@ -13,6 +14,7 @@
         }
     ],
     "require": {
+        "php": ">=7.3",
         "twilio/sdk": "^6.42",
         "laravel/framework": "^8.37|^9.0"
     },
