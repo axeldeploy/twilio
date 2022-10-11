@@ -1,5 +1,5 @@
 {
-    "name": "axel/twilio",
+    "name": "axelhub/twilio",
     "description": "Axel's sms send package",
     "type": "package",
     "autoload": {
