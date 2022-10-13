@@ -11,9 +11,14 @@
 After installing run command below. It will create `twilio.php` file in <i>config</i> folder.
 <pre>php artisan twilio:install</pre>
 
-Configure `twilio.php` file with Twilio key, secret, sid and from.
-<br>
-Also, you can customize the list of countries where the app will be able to send messages.
+Configure `twilio.php` file with Twilio key, secret, sid and from by adding variables below to your `.env` file:
+<pre>
+TWILIO_APP_KEY=
+TWILIO_APP_SECRET=
+TWILIO_APP_SID=
+TWILIO_APP_FROM=
+</pre>
+Also, in the `twilio.php` file you can customize the list of countries where the app will be able to send messages.
 [List of countries.](https://www.twilio.com/guidelines/regulatory)
 
 ## Using
