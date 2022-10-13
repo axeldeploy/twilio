@@ -2,6 +2,9 @@
 
 namespace Axel\Twilio;
 
+use Axel\Twilio\Exceptions\NotAllowedCountryException;
+use Axel\Twilio\Exceptions\NotAllowedTypeException;
+use Axel\Twilio\Exceptions\NotValidNumberException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Api\V2010\Account\MessageInstance;
 
@@ -33,6 +36,10 @@ class SmsMessage
     }
 
     /**
+     * @return MessageInstance
+     * @throws NotAllowedCountryException
+     * @throws NotAllowedTypeException
+     * @throws NotValidNumberException
      * @throws TwilioException
      */
     public function send(): MessageInstance
