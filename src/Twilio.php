@@ -19,8 +19,8 @@ class Twilio
     public function __construct()
     {
         $key = config('twilio.key');
-        $secret = config('twilio.key');
-        $sid = config('twilio.key');
+        $secret = config('twilio.secret');
+        $sid = config('twilio.sid');
         $this->from = config('twilio.from');
         $this->countries = config('twilio.countries');
 
