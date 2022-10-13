@@ -1,7 +1,6 @@
 # Twilio
 
-[![Packagist License](https://poser.pugx.org/barryvdh/laravel-dompdf/license.png)](http://choosealicense.com/licenses/mit/)
-[![Latest Stable Version](https://poser.pugx.org/axelhub/twilio/version.png)](https://packagist.org/packages/axelhub/twilio)
+[![Latest Stable Version](http://poser.pugx.org/axelhub/twilio/v)](https://packagist.org/packages/axelhub/twilio) [![Total Downloads](http://poser.pugx.org/axelhub/twilio/downloads)](https://packagist.org/packages/axelhub/twilio) [![Latest Unstable Version](http://poser.pugx.org/axelhub/twilio/v/unstable)](https://packagist.org/packages/axelhub/twilio) [![License](http://poser.pugx.org/axelhub/twilio/license)](https://packagist.org/packages/axelhub/twilio) [![PHP Version Require](http://poser.pugx.org/axelhub/twilio/require/php)](https://packagist.org/packages/axelhub/twilio)
 
 ### [Twilio sms sender](https://github.com/axeldeploy/twilio)
 
