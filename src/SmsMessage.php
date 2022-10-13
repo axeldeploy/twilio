@@ -35,8 +35,9 @@ class SmsMessage
     /**
      * @throws TwilioException
      */
-    public function send(Twilio $twilio): MessageInstance
+    public function send(): MessageInstance
     {
+        $twilio = new Twilio();
         return $twilio->sendSms($this->to, $this->message, $this->from);
     }
 }
