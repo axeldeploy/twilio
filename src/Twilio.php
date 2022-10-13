@@ -54,15 +54,11 @@ class Twilio
      */
     public function sendSms($to, $message, $from = null): MessageInstance
     {
-        if (empty($to)) {
-            throw new TwilioException("Recipient is not specified");
-        }
+        $this->validateNumber($to);
 
         if (empty($message)) {
             throw new TwilioException("Message is not specified");
         }
-
-        $this->validateNumber($to);
 
         if (!empty($from)) {
             $this->from = $from;
