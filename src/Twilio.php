@@ -2,6 +2,9 @@
 
 namespace Axel\Twilio;
 
+use Axel\Twilio\Exceptions\NotAllowedCountryException;
+use Axel\Twilio\Exceptions\NotAllowedTypeException;
+use Axel\Twilio\Exceptions\NotValidNumberException;
 use Twilio\Exceptions\ConfigurationException;
 use Twilio\Exceptions\TwilioException;
 use Twilio\Rest\Api\V2010\Account\MessageInstance;
@@ -12,6 +15,7 @@ class Twilio
     private $twilio;
     private $from;
     private $countries;
+    private $skipTwilioCheck;
 
     /**
      * @throws ConfigurationException
@@ -23,6 +27,7 @@ class Twilio
         $sid = config('twilio.sid');
         $this->from = config('twilio.from');
         $this->countries = config('twilio.countries');
+        $this->skipTwilioCheck = config('twilio.skip_twilio_check') ?: false;
 
         if (
             is_null($key) ||
@@ -40,8 +45,11 @@ class Twilio
     /**
      * @param $to
      * @param $message
-     * @param $from
+     * @param null $from
      * @return MessageInstance
+     * @throws NotAllowedCountryException
+     * @throws NotAllowedTypeException
+     * @throws NotValidNumberException
      * @throws TwilioException
      */
     public function sendSms($to, $message, $from = null): MessageInstance
@@ -54,9 +62,7 @@ class Twilio
             throw new TwilioException("Message is not specified");
         }
 
-        if (!$this->isValidNumber($to)) {
-            throw new TwilioException("Incorrect number");
-        }
+        $this->validateNumber($to);
 
         if (!empty($from)) {
             $this->from = $from;
@@ -69,21 +75,33 @@ class Twilio
     }
 
     /**
+     * @param $to
+     * @throws NotAllowedCountryException
+     * @throws NotAllowedTypeException
+     * @throws NotValidNumberException
      * @throws TwilioException
      */
-    private function isValidNumber($to): bool
+    private function validateNumber($to)
     {
-        if (empty($to)) return false;
-
-        $lookup = $this->twilio->lookups->v2->phoneNumbers($to);
-        $number = $lookup->fetch(["type" => ["carrier"]]);
-
-        if (empty($number->toArray())) return false;
-
-        if (!in_array($number->countryCode, $this->countries)) {
-            return false;
+        if (empty($to) || !preg_match('/^\+\d/', $to)) {
+            throw new NotValidNumberException('An empty or incorrect number was sent');
         }
 
-        return $number->valid;
+        if (!$this->skipTwilioCheck) {
+            $lookup = $this->twilio->lookups->v2->phoneNumbers($to);
+            $number = $lookup->fetch(["type" => ["carrier"]]);
+
+            if (empty($number->toArray())) {
+                throw new NotAllowedTypeException('Sent phone carrier was not found');
+            }
+
+            if (!$number->valid) {
+                throw new NotAllowedTypeException('Sent phone number is invalid');
+            }
+
+            if (!in_array($number->countryCode, $this->countries)) {
+                throw new NotAllowedCountryException('Unable to send SMS to numbers in this country');
+            }
+        }
     }
 }
