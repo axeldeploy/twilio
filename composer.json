@@ -15,9 +15,9 @@
         }
     ],
     "require": {
-        "php": ">=7.3",
-        "twilio/sdk": "^6.42",
-        "laravel/framework": "^8.37|^9.0"
+        "php": ">=8.0",
+        "twilio/sdk": "^7.5",
+        "laravel/framework": "^10"
     },
     "extra": {
         "laravel": {
