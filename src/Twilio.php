@@ -77,7 +77,7 @@ class Twilio
      * @throws NotValidNumberException
      * @throws TwilioException
      */
-    private function validateNumber($to)
+    public function validateNumber($to)
     {
         if (empty($to) || !preg_match('/^\+\d/', $to)) {
             throw new NotValidNumberException('An empty or incorrect number was sent');
